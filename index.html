@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/common.js"></script>
+    <title>用户登陆-本系统由林超凯倾情打造</title>
+    <script>
+        window.onload = function () {
+            // 获取节点
+            var user = getid("user");
+            var pwd = getid("pwd");
+            var inputCode = getid("inputCode");
+            var randomNum = getid("getRandomNumBtn");
+            var loginBtn = getid("loginBtn");
+
+
+            // 获取随机数
+            randomNum.onclick = function () {
+                randomNum.value = ranNum(6);
+                randomNum.style.fontSize = "20px";
+            }
+
+            // 控制登陆验证
+            loginBtn.onclick = function () {
+                // 获取节点值
+                var userName = user.value;
+                var passWord = pwd.value;
+                var inputRanCode = inputCode.value;
+                var ranNum = randomNum.value;
+
+                // 开始判断
+                if (userName && passWord && inputRanCode) {
+                    if (userName == "admin" && passWord == "admin888" && inputRanCode.toLowerCase == ranNum.toLowerCase) {
+                        window.open("./html/user.html");
+                    } else {
+                        alert("您填写的信息有误，请重新填写并登陆");
+                    }
+                    // console.log(userName);
+                    // console.log(passWord);
+                    // console.log(inputRanCode);
+                    // console.log(ranNum);
+                } else {
+                    alert("请填写完整的登陆信息");
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="login">
+        <div class="container">
+            <div class="loginWindows">
+                <div class="loginWindowsTop">
+                    <h2 class="loginWindowsTitle">用户登陆</h2>
+                </div>
+                <div class="loginWindowsBottom">
+                    <div class="loginWindowsInput">
+                        <ul>
+                            <li class="itmes">
+                                <input id="user" type="text" placeholder="请输入用户名">
+                            </li>
+                            <li class="itmes">
+                                <input id="pwd" type="password" placeholder="请输入密码">
+                            </li>
+                            <li class="itmes">
+                                <input id="inputCode" type="text" placeholder="请输入验证码">
+                            </li>
+                            <li class="itmes clearBorder">
+                                <input id="getRandomNumBtn" type="button" value="点击获取验证码">
+                            </li>
+                            <li class="itmes clearBorder loginBtnBox">
+                                <input id="loginBtn" type="button" value="登陆">
+                                <input type="button" value="注册">
+                            </li>
+                            <li class="itmes clearBorder">
+                                <span class="bottomTex">测试账号：admin 测试密码：admin888</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
